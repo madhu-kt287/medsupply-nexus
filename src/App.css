@@ -1,0 +1,2384 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap");
+
+/* =========================================================
+   BASE
+========================================================= */
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #17212b;
+  background: #f5f7f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f5f7f9;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+strong,
+small {
+  overflow-wrap: break-word;
+}
+
+/* =========================================================
+   APP SHELL
+========================================================= */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f7f9;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background: #10251f;
+  color: white;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 4px 10px 30px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #e7f4ec;
+  color: #1f7654;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.brand span {
+  display: block;
+  margin-top: 4px;
+  color: #7fc4a5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.sidebar-label {
+  margin: 0 10px 10px;
+  color: #6d8a7e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.nav-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #a9bcb4;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.nav-item:hover {
+  background: #17362d;
+  color: white;
+}
+
+.nav-item.active {
+  background: #e6f2eb;
+  color: #1d6048;
+  font-weight: 700;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 12px 10px;
+}
+
+.system-status {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 12px;
+  background: #17362d;
+  border-radius: 10px;
+}
+
+.system-status strong,
+.system-status small {
+  display: block;
+}
+
+.system-status strong {
+  font-size: 10px;
+}
+
+.system-status small {
+  color: #7f9a90;
+  margin-top: 3px;
+  font-size: 9px;
+}
+
+.status-dot,
+.live-indicator span {
+  width: 7px;
+  height: 7px;
+  background: #49b37c;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(73, 179, 124, 0.12);
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 28px 34px 18px;
+  max-width: 1700px;
+}
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.eyebrow,
+.panel-kicker {
+  margin: 0 0 5px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  color: #7d8b87;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 26px;
+  letter-spacing: -0.7px;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e3e9e6;
+  background: white;
+  color: #53635d;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-dot {
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background: #dc5d5d;
+  border-radius: 50%;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: #dcece4;
+  color: #21654b;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.profile-text strong,
+.profile-text span {
+  display: block;
+}
+
+.profile-text strong {
+  font-size: 11px;
+}
+
+.profile-text span {
+  font-size: 9px;
+  color: #8a9692;
+  margin-top: 3px;
+}
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.welcome-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 17px;
+}
+
+.welcome-row h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.welcome-row p {
+  margin: 4px 0 0;
+  color: #7c8985;
+  font-size: 11px;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #e9f5ee;
+  color: #267353;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   DASHBOARD STATS
+========================================================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+  margin-bottom: 15px;
+}
+
+.stat-card,
+.panel {
+  background: white;
+  border: 1px solid #e7ece9;
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(25, 50, 40, 0.035);
+}
+
+.stat-card {
+  padding: 17px;
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+}
+
+.stat-card.danger .stat-icon {
+  color: #b84646;
+  background: #fae9e8;
+}
+
+.stat-card.warning .stat-icon {
+  color: #ad7925;
+  background: #fff2dc;
+}
+
+.stat-card.info .stat-icon {
+  color: #39729a;
+  background: #e8f2f8;
+}
+
+.stat-card.cold .stat-icon {
+  color: #4b7e9c;
+  background: #e9f5fa;
+}
+
+.stat-value {
+  margin-top: 14px;
+  font-family: "Manrope", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.stat-label {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.stat-change {
+  margin-top: 4px;
+  color: #89948f;
+  font-size: 9px;
+}
+
+.muted-icon {
+  color: #bdc7c3;
+}
+
+/* =========================================================
+   CONTENT GRID
+========================================================= */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.8fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.panel {
+  padding: 18px;
+}
+
+.panel-header,
+.ai-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h3,
+.ai-heading h3 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+}
+
+.text-button {
+  border: 0;
+  background: transparent;
+  color: #267353;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+/* =========================================================
+   RISK LIST
+========================================================= */
+
+.risk-list {
+  margin-top: 15px;
+}
+
+.risk-row {
+  min-height: 60px;
+  border-top: 1px solid #edf0ef;
+  display: grid;
+  grid-template-columns: 34px 1.5fr 0.75fr 0.65fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.medicine-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: #f1f6f3;
+  color: #397a5c;
+  display: grid;
+  place-items: center;
+}
+
+.risk-main strong,
+.risk-main span,
+.risk-stock strong,
+.risk-stock span,
+.risk-days strong,
+.risk-days span {
+  display: block;
+}
+
+.risk-main strong,
+.risk-stock strong,
+.risk-days strong {
+  font-size: 10px;
+}
+
+.risk-main span,
+.risk-stock span,
+.risk-days span {
+  margin-top: 3px;
+  color: #929c98;
+  font-size: 8px;
+}
+
+.risk-status,
+.safe-badge,
+.map-badge {
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.risk-status.critical {
+  background: #fae9e8;
+  color: #b64646;
+}
+
+.risk-status.at-risk {
+  background: #fff2dc;
+  color: #a77220;
+}
+
+.risk-status.expiry-risk {
+  background: #f5eddb;
+  color: #8e762d;
+}
+
+/* =========================================================
+   AI PANEL
+========================================================= */
+
+.ai-panel {
+  background: linear-gradient(145deg, #ffffff, #f7faf8);
+}
+
+.ai-heading {
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.ai-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: #e4f1e9;
+  color: #277454;
+}
+
+.ai-alert {
+  margin-top: 17px;
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f4f8f5;
+}
+
+.ai-alert-icon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background: #fff0dd;
+  color: #ad7925;
+  display: grid;
+  place-items: center;
+}
+
+.ai-alert strong {
+  font-size: 10px;
+}
+
+.ai-alert p {
+  margin: 4px 0 0;
+  color: #75817d;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.recommendation {
+  margin-top: 12px;
+}
+
+.recommendation-title {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  color: #287052;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.recommendation > p {
+  color: #6f7c77;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.recommendation-route,
+.shipment-route {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid #e6ece8;
+  border-radius: 9px;
+  background: white;
+}
+
+.recommendation-route {
+  justify-content: space-between;
+}
+
+.recommendation-route div,
+.shipment-route div {
+  min-width: 0;
+}
+
+.recommendation-route span,
+.shipment-route span {
+  display: block;
+  color: #a0aaa6;
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.recommendation-route strong,
+.shipment-route strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 8px;
+}
+
+.primary-button,
+.secondary-button {
+  border: 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.primary-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #1d6048;
+  color: white;
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.primary-button:disabled:hover {
+  opacity: 0.75;
+}
+
+.secondary-button {
+  width: 100%;
+  margin-top: 13px;
+  padding: 10px;
+  border: 1px solid #dce5e0;
+  background: white;
+  color: #286a4e;
+}
+
+/* =========================================================
+   BOTTOM GRID
+========================================================= */
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.8fr);
+  gap: 15px;
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.map-badge {
+  background: #eaf4ee;
+  color: #2a7352;
+}
+
+.network-map {
+  height: 225px;
+  margin-top: 14px;
+  border-radius: 11px;
+  overflow: hidden;
+  position: relative;
+  background: #edf2ed;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(
+      25deg,
+      transparent 48%,
+      #d7dfd9 49%,
+      #d7dfd9 50%,
+      transparent 51%
+    ),
+    linear-gradient(
+      155deg,
+      transparent 48%,
+      #d7dfd9 49%,
+      #d7dfd9 50%,
+      transparent 51%
+    );
+  background-size: 90px 70px;
+}
+
+.map-route {
+  position: absolute;
+  height: 3px;
+  background: #4b9875;
+  border-radius: 10px;
+  transform-origin: left;
+  opacity: 0.75;
+}
+
+.route-one {
+  width: 43%;
+  left: 27%;
+  top: 53%;
+  transform: rotate(-17deg);
+}
+
+.route-two {
+  width: 30%;
+  left: 45%;
+  top: 52%;
+  transform: rotate(20deg);
+  background: #d69a4c;
+}
+
+.map-node {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: white;
+  color: #246c4e;
+  border: 3px solid #4d9c78;
+  box-shadow: 0 3px 12px rgba(30, 70, 50, 0.18);
+  position: absolute;
+  z-index: 3;
+}
+
+.node-a {
+  left: 24%;
+  top: 44%;
+}
+
+.node-b {
+  left: 66%;
+  top: 33%;
+  border-color: #d39a4f;
+  color: #aa7427;
+}
+
+.node-c {
+  left: 73%;
+  top: 62%;
+}
+
+.map-label {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-size: 7px;
+  font-weight: 700;
+  z-index: 4;
+}
+
+.label-a {
+  left: 17%;
+  top: 60%;
+}
+
+.label-b {
+  left: 60%;
+  top: 25%;
+}
+
+.label-c {
+  left: 67%;
+  top: 76%;
+}
+
+.map-truck {
+  position: absolute;
+  left: 46%;
+  top: 44%;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1d6048;
+  color: white;
+  display: grid;
+  place-items: center;
+  z-index: 5;
+  box-shadow: 0 3px 12px rgba(29, 96, 72, 0.25);
+}
+
+.map-overlay {
+  position: absolute;
+  left: 11px;
+  top: 11px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 10px;
+  border-radius: 7px;
+  z-index: 5;
+}
+
+.map-overlay span,
+.map-overlay strong {
+  display: block;
+}
+
+.map-overlay span {
+  font-size: 7px;
+  color: #31815d;
+  font-weight: 800;
+}
+
+.map-overlay strong {
+  margin-top: 3px;
+  font-size: 9px;
+}
+
+.safe-badge {
+  background: #e9f5ee;
+  color: #267353;
+}
+
+/* =========================================================
+   TEMPERATURE / SHIPMENT
+========================================================= */
+
+.temperature-card {
+  margin-top: 15px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #f0f7f4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #3d7d63;
+}
+
+.temperature-card span,
+.temperature-card strong,
+.temperature-card small {
+  display: block;
+}
+
+.temperature-card span {
+  font-size: 8px;
+  color: #83938c;
+}
+
+.temperature-card strong {
+  margin-top: 3px;
+  font-family: "Manrope", sans-serif;
+  font-size: 29px;
+}
+
+.temperature-card small {
+  margin-top: 3px;
+  color: #6f817a;
+  font-size: 8px;
+}
+
+.shipment-route {
+  margin-top: 12px;
+  justify-content: space-between;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 3px 4px;
+  color: #9aa49f;
+  font-size: 8px;
+}
+
+/* =========================================================
+   PAGE CONTAINER
+========================================================= */
+
+.page-container {
+  padding: 30px 0;
+}
+
+.page-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.page-intro h3 {
+  font-size: 28px;
+  margin: 5px 0;
+}
+
+.page-intro p {
+  color: #71808a;
+  margin: 5px 0 0;
+}
+
+.map-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #eaf7f1;
+  color: #176b52;
+  padding: 11px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   NETWORK / REDISTRIBUTION
+========================================================= */
+
+.network-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(330px, 0.75fr);
+  gap: 20px;
+}
+
+.live-map-panel {
+  position: relative;
+  overflow: hidden;
+  min-height: 570px;
+}
+
+.live-map {
+  height: 570px;
+  width: 100%;
+  z-index: 1;
+}
+
+.map-legend {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 500;
+  display: flex;
+  gap: 15px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.legend-dot.surplus {
+  background: #28a878;
+}
+
+.legend-dot.risk {
+  background: #e7a735;
+}
+
+.legend-dot.critical {
+  background: #e45656;
+}
+
+.custom-hospital-marker {
+  background: transparent;
+  border: none;
+}
+
+.map-marker {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid white;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+  color: white;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.marker-surplus {
+  background: #19815f;
+}
+
+.marker-critical {
+  background: #df4c4c;
+}
+
+.marker-risk {
+  background: #d89926;
+}
+
+.map-popup strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.map-popup span {
+  font-size: 11px;
+  font-weight: 800;
+  color: #d65353;
+}
+
+.map-popup p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.map-popup button {
+  border: 0;
+  background: #176b52;
+  color: white;
+  padding: 8px 11px;
+  border-radius: 7px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.transfer-panel {
+  padding: 25px;
+}
+
+.transfer-alert {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  margin: 20px 0;
+  background: #fff5e8;
+  border-radius: 12px;
+  color: #9b6514;
+}
+
+.transfer-alert p {
+  margin: 5px 0 0;
+  color: #6f6b61;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.transfer-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid #e4ebe7;
+  border-radius: 12px;
+}
+
+.transfer-box div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.transfer-box span,
+.transfer-details span {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #8a9892;
+}
+
+.transfer-box strong {
+  font-size: 12px;
+}
+
+.transfer-box small {
+  color: #8a9892;
+}
+
+.transfer-details {
+  margin: 18px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.transfer-details div {
+  padding: 12px;
+  background: #f6f9f7;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.transfer-details strong {
+  font-size: 13px;
+}
+
+.demo-note {
+  display: block;
+  margin-top: 12px;
+  font-size: 10px;
+  color: #9aa5a0;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   SUPPLY INTELLIGENCE
+========================================================= */
+
+.intelligence-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 0.8fr;
+  gap: 20px;
+}
+
+.intelligence-main {
+  padding: 24px;
+}
+
+.intelligence-row {
+  display: grid;
+  grid-template-columns: 40px 1.6fr 0.7fr 0.7fr 100px;
+  gap: 14px;
+  align-items: center;
+  padding: 17px 0;
+  border-bottom: 1px solid #edf1ef;
+}
+
+.intelligence-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.intelligence-row span {
+  font-size: 11px;
+  color: #87948e;
+}
+
+.forecast-card {
+  padding: 25px;
+}
+
+.forecast-number {
+  font-size: 55px;
+  font-weight: 800;
+  color: #d85353;
+  margin: 25px 0 5px;
+}
+
+.forecast-card > p {
+  color: #74817c;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.forecast-action {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  padding: 15px;
+  background: #edf8f3;
+  border-radius: 12px;
+  color: #176b52;
+}
+
+.forecast-action div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.forecast-action span {
+  font-size: 12px;
+  color: #66756f;
+}
+
+/* =========================================================
+   COLD CHAIN
+========================================================= */
+
+.cold-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.cold-stat {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.cold-stat svg {
+  color: #3283ad;
+}
+
+.cold-stat strong {
+  font-size: 30px;
+}
+
+.cold-stat span {
+  color: #84908b;
+  font-size: 12px;
+}
+
+.cold-shipment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.shipment-card {
+  padding: 24px;
+}
+
+.shipment-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.shipment-top h3 {
+  margin: 4px 0;
+}
+
+.safe-badge,
+.critical-badge,
+.warning-badge,
+.surplus-badge {
+  align-self: flex-start;
+  white-space: nowrap;
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.safe-badge {
+  background: #e8f6ef;
+  color: #19815f;
+}
+
+.critical-badge {
+  background: #fdeaea;
+  color: #d44f4f;
+}
+
+.warning-badge {
+  background: #fff3dd;
+  color: #a76b17;
+}
+
+.surplus-badge {
+  background: #e7f7ef;
+  color: #19815f;
+}
+
+.temperature-display {
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 14px;
+  background: #f3f8fa;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.temperature-display svg {
+  color: #3584a9;
+}
+
+.temperature-display div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.temperature-display span,
+.temperature-display small {
+  color: #7d8985;
+  font-size: 11px;
+}
+
+.temperature-display strong {
+  font-size: 31px;
+}
+
+.cold-warning {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 15px;
+  background: #fff0f0;
+  border-radius: 11px;
+  color: #c74c4c;
+}
+
+.cold-warning p {
+  margin: 5px 0 0;
+  color: #725d5d;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   HOSPITALS
+========================================================= */
+
+.hospital-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.hospital-card {
+  padding: 24px;
+}
+
+.hospital-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hospital-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #eaf5f0;
+  color: #176b52;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hospital-card h3 {
+  margin: 18px 0;
+}
+
+.hospital-info {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.hospital-info div {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #65746e;
+  font-size: 12px;
+}
+
+.hospital-info svg {
+  flex-shrink: 0;
+  color: #176b52;
+}
+
+/* =========================================================
+   AI COPILOT
+========================================================= */
+
+.copilot-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  gap: 20px;
+}
+
+.copilot-chat {
+  padding: 24px;
+}
+
+.copilot-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9efec;
+}
+
+.copilot-header > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.copilot-header span {
+  color: #84908b;
+  font-size: 11px;
+}
+
+.chat-message {
+  display: flex;
+  gap: 12px;
+  margin: 25px 0;
+  padding: 17px;
+  border-radius: 12px;
+  background: #eef8f3;
+  color: #176b52;
+}
+
+.chat-message div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.chat-message p {
+  margin: 0;
+  color: #5e716a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.question-grid button {
+  padding: 14px;
+  background: white;
+  border: 1px solid #dfe8e4;
+  border-radius: 9px;
+  text-align: left;
+  cursor: pointer;
+  color: #33423d;
+}
+
+.question-grid button:hover {
+  border-color: #176b52;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.chat-input input {
+  flex: 1;
+  border: 1px solid #dce5e1;
+  border-radius: 9px;
+  padding: 14px;
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color: #176b52;
+}
+
+.chat-input button {
+  width: 48px;
+  border: 0;
+  border-radius: 9px;
+  background: #176b52;
+  color: white;
+  cursor: pointer;
+}
+
+.copilot-insights {
+  padding: 24px;
+}
+
+.insight-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+  color: #c95151;
+}
+
+.copilot-insights > p {
+  color: #71807a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.insight-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf1ef;
+}
+
+.insight-step span {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eaf5f0;
+  color: #176b52;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   LAPTOP / SMALL DESKTOP
+   1101px — 1399px
+========================================================= */
+
+@media (min-width: 1101px) and (max-width: 1399px) {
+  .sidebar {
+    width: 225px;
+  }
+
+  .main-content {
+    margin-left: 225px;
+    width: calc(100% - 225px);
+    padding: 24px 26px 18px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .content-grid,
+  .bottom-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.8fr);
+  }
+
+  .network-layout {
+    grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.75fr);
+  }
+
+  .hospital-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   801px — 1100px
+========================================================= */
+
+@media (min-width: 801px) and (max-width: 1100px) {
+  .sidebar {
+    width: 200px;
+    padding: 20px 12px;
+  }
+
+  .brand {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .nav-item {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    padding: 22px 20px;
+  }
+
+  .topbar {
+    margin-bottom: 22px;
+  }
+
+  .topbar h2 {
+    font-size: 23px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-grid,
+  .bottom-grid,
+  .network-layout,
+  .intelligence-grid,
+  .copilot-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cold-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cold-shipment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .live-map-panel,
+  .live-map {
+    min-height: 500px;
+    height: 500px;
+  }
+
+  .transfer-panel {
+    padding: 22px;
+  }
+
+  .page-container {
+    padding-top: 20px;
+  }
+}
+
+/* =========================================================
+   TABLET PORTRAIT
+   601px — 800px
+========================================================= */
+
+@media (min-width: 601px) and (max-width: 800px) {
+  .app-shell {
+    display: block;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    padding: 14px 16px;
+  }
+
+  .brand {
+    padding: 4px 6px 14px;
+  }
+
+  .sidebar-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .sidebar-label {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .main-content {
+    width: 100%;
+    margin: 0;
+    padding: 20px 18px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .profile-text {
+    display: none;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-grid,
+  .bottom-grid,
+  .network-layout,
+  .intelligence-grid,
+  .copilot-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cold-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cold-shipment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .live-map-panel {
+    min-height: 450px;
+  }
+
+  .live-map {
+    height: 450px;
+  }
+
+  .intelligence-row {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .intelligence-row > div:nth-child(3),
+  .intelligence-row > div:nth-child(4),
+  .intelligence-row > div:nth-child(5) {
+    grid-column: 2;
+  }
+
+  .transfer-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .transfer-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .question-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   MOBILE
+   321px — 600px
+========================================================= */
+
+@media (max-width: 600px) {
+  html,
+  body {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: hidden;
+  }
+
+  .app-shell {
+    display: block;
+    width: 100%;
+  }
+
+  /* Mobile Sidebar */
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    padding: 12px;
+  }
+
+  .brand {
+    padding: 3px 5px 13px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .sidebar-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .sidebar-label {
+    margin: 0 7px 5px;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 10px;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  /* Main Content */
+
+  .main-content {
+    width: 100%;
+    margin: 0;
+    padding: 16px 12px;
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .topbar h2 {
+    font-size: 21px;
+    line-height: 1.2;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+  }
+
+  .topbar-actions {
+    gap: 8px;
+  }
+
+  .profile-text {
+    display: none;
+  }
+
+  .icon-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Dashboard */
+
+  .welcome-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .welcome-row h3 {
+    font-size: 14px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-value {
+    font-size: 23px;
+  }
+
+  .content-grid,
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* General Panels */
+
+  .panel {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px;
+    overflow: hidden;
+  }
+
+  .panel-header,
+  .ai-heading {
+    gap: 10px;
+  }
+
+  .panel-header h3,
+  .ai-heading h3 {
+    font-size: 13px;
+  }
+
+  /* Risk List */
+
+  .risk-row {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 9px;
+    padding: 11px 0;
+  }
+
+  .risk-stock,
+  .risk-days {
+    display: none;
+  }
+
+  .risk-status {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: -3px;
+  }
+
+  .risk-main {
+    min-width: 0;
+  }
+
+  .risk-main strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* AI Panel */
+
+  .ai-alert {
+    align-items: flex-start;
+  }
+
+  .recommendation-route {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .recommendation-route > svg {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+  /* Page Headers */
+
+  .page-container {
+    padding: 18px 0;
+  }
+
+  .page-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .page-intro h3 {
+    font-size: 23px;
+    line-height: 1.2;
+  }
+
+  .page-intro p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .map-status,
+  .live-indicator {
+    max-width: 100%;
+  }
+
+  /* Redistribution */
+
+  .network-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .live-map-panel {
+    min-height: 390px;
+    padding: 0;
+  }
+
+  .live-map {
+    height: 390px;
+    width: 100%;
+  }
+
+  .map-legend {
+    left: 9px;
+    bottom: 9px;
+    right: 9px;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 10px;
+  }
+
+  .map-marker {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .transfer-panel {
+    padding: 16px;
+  }
+
+  .transfer-alert {
+    padding: 13px;
+    margin: 15px 0;
+  }
+
+  .transfer-alert p {
+    font-size: 11px;
+  }
+
+  .transfer-box {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+  }
+
+  .transfer-box > svg {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+
+  .transfer-details {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    min-height: 42px;
+    font-size: 10px;
+  }
+
+  /* Supply Intelligence */
+
+  .intelligence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intelligence-main,
+  .forecast-card {
+    padding: 16px;
+  }
+
+  .intelligence-row {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 9px;
+    padding: 14px 0;
+  }
+
+  .intelligence-row > div:nth-child(3),
+  .intelligence-row > div:nth-child(4),
+  .intelligence-row > div:nth-child(5) {
+    grid-column: 2;
+  }
+
+  .forecast-number {
+    font-size: 44px;
+  }
+
+  /* Cold Chain */
+
+  .cold-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cold-shipment-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .shipment-card {
+    padding: 16px;
+  }
+
+  .shipment-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .temperature-display {
+    margin: 18px 0;
+    padding: 15px;
+  }
+
+  .temperature-display strong {
+    font-size: 27px;
+  }
+
+  .shipment-route {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shipment-route > svg {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+
+  /* Hospital Network */
+
+  .hospital-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hospital-card {
+    padding: 16px;
+  }
+
+  .hospital-card-top {
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .hospital-card h3 {
+    font-size: 17px;
+  }
+
+  .hospital-info div {
+    font-size: 11px;
+  }
+
+  .safe-badge,
+  .critical-badge,
+  .warning-badge,
+  .surplus-badge {
+    white-space: normal;
+    text-align: center;
+    font-size: 8px;
+  }
+
+  /* AI Copilot */
+
+  .copilot-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .copilot-chat,
+  .copilot-insights {
+    padding: 16px;
+  }
+
+  .question-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-input {
+    width: 100%;
+  }
+
+  .chat-input input {
+    min-width: 0;
+    width: 100%;
+    padding: 12px;
+  }
+
+  .chat-input button {
+    flex: 0 0 44px;
+    width: 44px;
+  }
+
+  /* Footer */
+
+  .footer {
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 15px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   320px — 360px
+========================================================= */
+
+@media (max-width: 360px) {
+  .main-content {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .topbar h2 {
+    font-size: 19px;
+  }
+
+  .brand h1 {
+    font-size: 14px;
+  }
+
+  .nav-item {
+    font-size: 11px;
+  }
+
+  .page-intro h3 {
+    font-size: 21px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .map-status {
+    font-size: 10px;
+    padding: 8px 11px;
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP / SMART TV / LARGE MONITOR
+   1600px+
+========================================================= */
+
+@media (min-width: 1600px) {
+  .main-content {
+    max-width: 1700px;
+    margin-left: 250px;
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .page-container {
+    max-width: 1650px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
+    gap: 18px;
+  }
+
+  .stat-card {
+    padding: 22px;
+  }
+
+  .panel {
+    padding: 22px;
+  }
+
+  .page-intro h3 {
+    font-size: 30px;
+  }
+}
+
+/* =========================================================
+   LARGE TOUCHSCREENS / SMART BOARDS
+   1800px+
+========================================================= */
+
+@media (min-width: 1800px) {
+  .main-content {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .page-container {
+    max-width: 1750px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-item {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .stat-card {
+    min-height: 145px;
+  }
+
+  .panel {
+    border-radius: 16px;
+  }
+}
+
+/* =========================================================
+   GENERAL RESPONSIVE FALLBACKS
+========================================================= */
+
+@media (max-width: 1100px) {
+  .content-grid,
+  .bottom-grid,
+  .network-layout,
+  .intelligence-grid,
+  .copilot-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cold-shipment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .app-shell {
+    display: block;
+  }
+
+  .brand {
+    padding: 4px 7px 14px;
+  }
+
+  .sidebar-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+  }
+
+  .sidebar-label {
+    grid-column: 1 / -1;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .main-content {
+    margin: 0;
+    width: 100%;
+    padding: 18px 14px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .profile-text {
+    display: none;
+  }
+
+  .risk-row {
+    grid-template-columns: 34px 1fr auto;
+    padding: 10px 0;
+  }
+
+  .risk-stock,
+  .risk-days {
+    display: none;
+  }
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* =========================================================
+   LEAFLET
+========================================================= */
+
+.leaflet-container {
+  max-width: 100%;
+  width: 100%;
+}
