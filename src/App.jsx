@@ -138,40 +138,24 @@ const createHospitalIcon = (status) =>
 function App() {
   const [activePage, setActivePage] = useState("Dashboard");
 
-  /*
-    SHARED TRANSFER STATE
-
-    This is the single source of truth for the demo transfer.
-  */
   const [transferStarted, setTransferStarted] = useState(false);
 
-  /*
-    SHARED HOSPITAL INVENTORY
-  */
   const [hospitals, setHospitals] = useState(initialHospitals);
 
-  /*
-    SHARED RISK DATA
-  */
   const [risks, setRisks] = useState(initialRisks);
 
-  /*
-    NOTIFICATION PANEL
-  */
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
-  /*
-    AI COPILOT STATE
-  */
   const [copilotAnswer, setCopilotAnswer] = useState(
     "I can analyze medicine shortages, redistribution opportunities and cold-chain risks across the network."
   );
 
   const [copilotQuestion, setCopilotQuestion] = useState("");
 
-  /*
-    NAVIGATION
-  */
+  /* =========================================================
+     NAVIGATION
+  ========================================================= */
+
   const navigate = (page) => {
     setActivePage(page);
     setNotificationsOpen(false);
@@ -182,25 +166,11 @@ function App() {
   ========================================================= */
 
   const initiateTransfer = () => {
-    /*
-      Do nothing if transfer is already active.
-      This prevents duplicate transfers.
-    */
     if (transferStarted) {
       return;
     }
 
     setTransferStarted(true);
-
-    /*
-      Update CityCare:
-      480 -> 360
-    */
-
-    /*
-      Update District:
-      84 -> 204
-    */
 
     setHospitals((currentHospitals) =>
       currentHospitals.map((hospital) => {
@@ -224,10 +194,6 @@ function App() {
       })
     );
 
-    /*
-      Update shared risk.
-    */
-
     setRisks((currentRisks) =>
       currentRisks.map((risk) => {
         if (risk.id === "amoxicillin") {
@@ -243,10 +209,6 @@ function App() {
       })
     );
 
-    /*
-      Update AI message.
-    */
-
     setCopilotAnswer(
       "Transfer initiated successfully. 120 units of Amoxicillin 500mg are now in transit from CityCare Hospital to District Medical Centre."
     );
@@ -257,10 +219,6 @@ function App() {
   ========================================================= */
 
   const resetDemo = () => {
-    /*
-      Restore the original demo state.
-    */
-
     setTransferStarted(false);
     setHospitals(initialHospitals);
     setRisks(initialRisks);
@@ -270,7 +228,6 @@ function App() {
     );
 
     setCopilotQuestion("");
-
     setNotificationsOpen(false);
   };
 
@@ -331,9 +288,7 @@ function App() {
       lowerQuestion.includes("transfer") ||
       lowerQuestion.includes("stock")
     ) {
-      handleCopilotQuestion(
-        "Where should we redistribute stock?"
-      );
+      handleCopilotQuestion("Where should we redistribute stock?");
       return;
     }
 
@@ -342,9 +297,7 @@ function App() {
       lowerQuestion.includes("temperature") ||
       lowerQuestion.includes("cold")
     ) {
-      handleCopilotQuestion(
-        "Which shipment needs attention?"
-      );
+      handleCopilotQuestion("Which shipment needs attention?");
       return;
     }
 
@@ -353,9 +306,7 @@ function App() {
       lowerQuestion.includes("first") ||
       lowerQuestion.includes("next")
     ) {
-      handleCopilotQuestion(
-        "What action should we take first?"
-      );
+      handleCopilotQuestion("What action should we take first?");
       return;
     }
 
@@ -366,17 +317,9 @@ function App() {
     );
   };
 
-  /*
-    Dashboard statistics.
-  */
-
   const criticalRiskCount = risks.filter(
     (risk) => risk.status === "Critical"
   ).length;
-
-  /*
-    Existing demo transfers + this transfer.
-  */
 
   const activeTransferCount = transferStarted ? 5 : 4;
 
@@ -463,25 +406,17 @@ function App() {
       <main className="main-content">
         <header className="topbar">
           <div>
-            <p className="eyebrow">
-              HEALTHCARE SUPPLY INTELLIGENCE
-            </p>
+            <p className="eyebrow">HEALTHCARE SUPPLY INTELLIGENCE</p>
 
             <h2>{activePage}</h2>
           </div>
 
           <div className="topbar-actions">
-            {/* =================================================
-                WORKING NOTIFICATION BUTTON
-            ================================================= */}
-
             <div className="notification-wrapper">
               <button
                 className="icon-button"
                 onClick={() =>
-                  setNotificationsOpen(
-                    (current) => !current
-                  )
+                  setNotificationsOpen((current) => !current)
                 }
                 aria-label="Open notifications"
               >
@@ -504,9 +439,7 @@ function App() {
 
                     <button
                       className="notification-close"
-                      onClick={() =>
-                        setNotificationsOpen(false)
-                      }
+                      onClick={() => setNotificationsOpen(false)}
                     >
                       <X size={16} />
                     </button>
@@ -525,13 +458,11 @@ function App() {
                       </div>
 
                       <div>
-                        <strong>
-                          Amoxicillin shortage detected
-                        </strong>
+                        <strong>Amoxicillin shortage detected</strong>
 
                         <span>
-                          District Medical Centre has
-                          approximately 1.4 days of coverage.
+                          District Medical Centre has approximately
+                          1.4 days of coverage.
                         </span>
                       </div>
                     </button>
@@ -548,13 +479,11 @@ function App() {
                       </div>
 
                       <div>
-                        <strong>
-                          Transfer is in transit
-                        </strong>
+                        <strong>Transfer is in transit</strong>
 
                         <span>
-                          120 units are moving to District
-                          Medical Centre.
+                          120 units are moving to District Medical
+                          Centre.
                         </span>
                       </div>
                     </button>
@@ -572,13 +501,10 @@ function App() {
                     </div>
 
                     <div>
-                      <strong>
-                        Cold-chain alert
-                      </strong>
+                      <strong>Cold-chain alert</strong>
 
                       <span>
-                        Insulin Glargine shipment requires
-                        attention.
+                        Insulin Glargine shipment requires attention.
                       </span>
                     </div>
                   </button>
@@ -625,12 +551,11 @@ function App() {
             initiateTransfer={initiateTransfer}
             activeTransferCount={activeTransferCount}
             resetDemo={resetDemo}
+            navigate={navigate}
           />
         )}
 
-        {activePage === "ColdChain Sentinel" && (
-          <ColdChain />
-        )}
+        {activePage === "ColdChain Sentinel" && <ColdChain />}
 
         {activePage === "Hospital Network" && (
           <HospitalNetwork
@@ -680,7 +605,7 @@ function NavButton({
       onClick={() => navigate(label)}
     >
       {icon}
-      <span>{label}</span>
+      {label}
     </button>
   );
 }
@@ -733,8 +658,10 @@ function Dashboard({
 
   return (
     <>
-      <section className="welcome-row">
+      <section className="page-heading">
         <div>
+          <p className="panel-kicker">COMMAND CENTER</p>
+
           <h3>Good morning, Operations Team</h3>
 
           <p>
@@ -769,38 +696,24 @@ function Dashboard({
                 />
               </div>
 
-              <div className="stat-value">
-                {stat.value}
-              </div>
+              <div className="stat-value">{stat.value}</div>
 
-              <div className="stat-label">
-                {stat.label}
-              </div>
+              <div className="stat-label">{stat.label}</div>
 
-              <div className="stat-change">
-                {stat.change}
-              </div>
+              <div className="stat-change">{stat.change}</div>
             </div>
           );
         })}
       </section>
 
       <section className="content-grid">
-        {/* =================================================
-            RISKS
-        ================================================= */}
-
         <div className="panel risk-panel">
           <div className="panel-header">
             <div>
-              <p className="panel-kicker">
-                SUPPLY MONITOR
-              </p>
+              <p className="panel-kicker">SUPPLY MONITOR</p>
 
               <h3>Critical Supply Risks</h3>
             </div>
-
-            {/* NOW WORKS */}
 
             <button
               className="text-button"
@@ -829,10 +742,7 @@ function Dashboard({
                 </div>
 
                 <div className="risk-stock">
-                  <strong>
-                    {risk.stock} units
-                  </strong>
-
+                  <strong>{risk.stock} units</strong>
                   <span>Current stock</span>
                 </div>
 
@@ -852,10 +762,6 @@ function Dashboard({
             ))}
           </div>
         </div>
-
-        {/* =================================================
-            AI RECOMMENDATION
-        ================================================= */}
 
         <div className="panel ai-panel">
           <div className="ai-heading">
@@ -927,8 +833,6 @@ function Dashboard({
               </div>
             </div>
 
-            {/* WORKING REVIEW TRANSFER */}
-
             <button
               className="primary-button"
               onClick={() =>
@@ -957,12 +861,10 @@ function SupplyIntelligence({
   transferStarted,
 }) {
   return (
-    <div className="page-container">
-      <div className="page-intro">
+    <>
+      <section className="page-heading">
         <div>
-          <p className="panel-kicker">
-            AI RISK ENGINE
-          </p>
+          <p className="panel-kicker">AI RISK ENGINE</p>
 
           <h3>Supply Intelligence</h3>
 
@@ -976,15 +878,13 @@ function SupplyIntelligence({
           <span></span>
           AI Monitoring
         </div>
-      </div>
+      </section>
 
       <div className="intelligence-grid">
         <div className="panel intelligence-main">
           <div className="panel-header">
             <div>
-              <p className="panel-kicker">
-                FORECAST
-              </p>
+              <p className="panel-kicker">FORECAST</p>
 
               <h3>Medicine Risk Analysis</h3>
             </div>
@@ -1005,10 +905,7 @@ function SupplyIntelligence({
               </div>
 
               <div>
-                <strong>
-                  {risk.stock} units
-                </strong>
-
+                <strong>{risk.stock} units</strong>
                 <span>Stock</span>
               </div>
 
@@ -1035,9 +932,7 @@ function SupplyIntelligence({
             </div>
 
             <div>
-              <p className="panel-kicker">
-                AI FORECAST
-              </p>
+              <p className="panel-kicker">AI FORECAST</p>
 
               <h3>Priority Action</h3>
             </div>
@@ -1072,7 +967,7 @@ function SupplyIntelligence({
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -1086,6 +981,7 @@ function Redistribution({
   initiateTransfer,
   activeTransferCount,
   resetDemo,
+  navigate,
 }) {
   const route = [
     hospitals[0].position,
@@ -1102,8 +998,8 @@ function Redistribution({
   );
 
   return (
-    <div className="page-container">
-      <div className="page-intro">
+    <>
+      <section className="page-heading">
         <div>
           <p className="panel-kicker">
             LIVE LOGISTICS NETWORK
@@ -1130,10 +1026,6 @@ function Redistribution({
             {activeTransferCount} Active Transfers
           </div>
 
-          {/* =================================================
-              DEMO RESET
-          ================================================= */}
-
           <button
             className="secondary-button"
             onClick={resetDemo}
@@ -1148,7 +1040,7 @@ function Redistribution({
             Reset Demo
           </button>
         </div>
-      </div>
+      </section>
 
       <div className="network-layout">
         {/* =================================================
@@ -1186,9 +1078,7 @@ function Redistribution({
               >
                 <Popup>
                   <div className="map-popup">
-                    <strong>
-                      {hospital.name}
-                    </strong>
+                    <strong>{hospital.name}</strong>
 
                     <span>{hospital.status}</span>
 
@@ -1198,7 +1088,12 @@ function Redistribution({
                       {hospital.stock} units
                     </p>
 
-                    <button>
+                    {/* FIXED: View Hospital now works */}
+                    <button
+                      onClick={() => {
+                        navigate("Hospital Network");
+                      }}
+                    >
                       View Hospital
                       <ArrowRight size={13} />
                     </button>
@@ -1233,9 +1128,7 @@ function Redistribution({
         <div className="panel transfer-panel">
           <div className="panel-header">
             <div>
-              <p className="panel-kicker">
-                AI MATCH
-              </p>
+              <p className="panel-kicker">AI MATCH</p>
 
               <h3>
                 {transferStarted
@@ -1269,9 +1162,7 @@ function Redistribution({
                 <AlertTriangle size={20} />
 
                 <div>
-                  <strong>
-                    Shortage detected
-                  </strong>
+                  <strong>Shortage detected</strong>
 
                   <p>
                     District Medical Centre has only
@@ -1332,10 +1223,6 @@ function Redistribution({
             </div>
           </div>
 
-          {/* =================================================
-              ONE-TIME TRANSFER BUTTON
-          ================================================= */}
-
           <button
             className="primary-button"
             onClick={initiateTransfer}
@@ -1364,10 +1251,6 @@ function Redistribution({
               <ArrowRight size={17} />
             )}
           </button>
-
-          {/* =================================================
-              LIVE STATUS
-          ================================================= */}
 
           {transferStarted && (
             <div
@@ -1400,7 +1283,7 @@ function Redistribution({
           </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -1410,8 +1293,8 @@ function Redistribution({
 
 function ColdChain() {
   return (
-    <div className="page-container">
-      <div className="page-intro">
+    <>
+      <section className="page-heading">
         <div>
           <p className="panel-kicker">
             TEMPERATURE INTELLIGENCE
@@ -1428,7 +1311,7 @@ function ColdChain() {
         <div className="safe-badge">
           ● Network Protected
         </div>
-      </div>
+      </section>
 
       <div className="cold-summary-grid">
         <div className="panel cold-stat">
@@ -1469,7 +1352,7 @@ function ColdChain() {
           status="CRITICAL"
         />
       </div>
-    </div>
+    </>
   );
 }
 
@@ -1489,7 +1372,7 @@ function ColdShipment({
         critical ? "critical-shipment" : ""
       }`}
     >
-      <div className="shipment-top">
+      <div className="shipment-header">
         <div>
           <p className="panel-kicker">
             SHIPMENT #{id}
@@ -1567,8 +1450,8 @@ function HospitalNetwork({
   navigate,
 }) {
   return (
-    <div className="page-container">
-      <div className="page-intro">
+    <>
+      <section className="page-heading">
         <div>
           <p className="panel-kicker">
             CONNECTED HEALTH FACILITIES
@@ -1581,7 +1464,7 @@ function HospitalNetwork({
             network.
           </p>
         </div>
-      </div>
+      </section>
 
       <div className="hospital-grid">
         {hospitals.map((hospital) => (
@@ -1633,8 +1516,6 @@ function HospitalNetwork({
               </div>
             </div>
 
-            {/* WORKING BUTTON */}
-
             <button
               className="secondary-button"
               onClick={() =>
@@ -1651,7 +1532,7 @@ function HospitalNetwork({
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -1679,8 +1560,8 @@ function AICopilot({
   );
 
   return (
-    <div className="page-container">
-      <div className="page-intro">
+    <>
+      <section className="page-heading">
         <div>
           <p className="panel-kicker">
             GENERATIVE AI
@@ -1693,13 +1574,9 @@ function AICopilot({
             should happen next.
           </p>
         </div>
-      </div>
+      </section>
 
       <div className="copilot-layout">
-        {/* =================================================
-            CHAT
-        ================================================= */}
-
         <div className="panel copilot-chat">
           <div className="copilot-header">
             <div className="ai-icon">
@@ -1714,10 +1591,6 @@ function AICopilot({
             </div>
           </div>
 
-          {/* =================================================
-              AI RESPONSE
-          ================================================= */}
-
           <div className="chat-message ai-message">
             <Sparkles size={18} />
 
@@ -1729,10 +1602,6 @@ function AICopilot({
               <p>{copilotAnswer}</p>
             </div>
           </div>
-
-          {/* =================================================
-              WORKING AI QUESTION BUTTONS
-          ================================================= */}
 
           <div className="question-grid">
             <button
@@ -1776,10 +1645,6 @@ function AICopilot({
             </button>
           </div>
 
-          {/* =================================================
-              WORKING AI INPUT
-          ================================================= */}
-
           <div className="chat-input">
             <input
               value={copilotQuestion}
@@ -1804,10 +1669,6 @@ function AICopilot({
             </button>
           </div>
         </div>
-
-        {/* =================================================
-            INSIGHTS
-        ================================================= */}
 
         <div className="panel copilot-insights">
           <p className="panel-kicker">
@@ -1858,10 +1719,6 @@ function AICopilot({
             </strong>
           </div>
 
-          {/* =================================================
-              WORKING AI ACTION
-          ================================================= */}
-
           <button
             className="primary-button"
             onClick={() =>
@@ -1879,7 +1736,7 @@ function AICopilot({
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
